@@ -1,7 +1,7 @@
 package main
 
 import (
-	router "bankplay/internal/api"
+	router "bankplay/internal/api/routes"
 	"net/http"
 )
 
