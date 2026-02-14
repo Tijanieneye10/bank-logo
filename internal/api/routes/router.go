@@ -1,14 +1,13 @@
 package routes
 
-import "net/http"
+import (
+	"bankplay/internal/api/handlers"
+	"net/http"
+)
 
 func SetupRouter(mux *http.ServeMux) {
-	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		_, err := w.Write([]byte("Hello World"))
-		if err != nil {
-			return
-		}
-	})
+	mux.HandleFunc("/", handlers.GetBanks)
+	mux.HandleFunc("/banks/{code}", handlers.GetSingleBank)
 
 	mux.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
 		_, _ = w.Write([]byte("OK, its working "))
